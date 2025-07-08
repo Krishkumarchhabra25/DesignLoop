@@ -1,7 +1,8 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { useRouter } from 'expo-router';
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
-import React, { useEffect } from 'react';
+import React from 'react';
+
+import { Logo } from '@/components/Logo';
 
 import {
   Platform,
@@ -11,18 +12,13 @@ import {
   Text,
   View,
 } from 'react-native';
-import { Logo } from '../components/Logo';
+
+
+
+
 
 export default function SplashScreen() {
 
-    const router = useRouter();
-
-    useEffect(()=>{
-        const timer = setTimeout(()=>{
-            router.replace('/auth/sign-in');
-        } , 2000);
-        return ()=> clearTimeout(timer);
-    } , [])
   return (
     <LinearGradient
       colors={[

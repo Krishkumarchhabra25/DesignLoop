@@ -2,7 +2,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import * as ImagePicker from 'expo-image-picker';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, { useRef, useState } from 'react';
 import {
@@ -27,6 +26,9 @@ import FormInput from '@/components/common/FormInput';
 import EditIcon from '@/components/svgImageComponents/EditIcon';
 import useAccountProgress from '@/hooks/useAccountProgress';
 import styles from '@/styles/AccountSetup/PersonalInfo.styles';
+import { AuthStackParamList } from '@/types/navigation';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Calendar } from 'lucide-react-native';
 
 
@@ -39,8 +41,13 @@ const schema = yup.object().shape({
 
 const genderOptions = ['Male', 'Female', 'Other'];
 
+type NavigationProp = NativeStackNavigationProp<AuthStackParamList, 'PersonalInfo'>;
+
+
+
 const PersonalInfoScreen = () => {
-  const router = useRouter();
+  
+  const navigation = useNavigation<NavigationProp>();
   const [image, setImage] = useState<string | null>(null);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [genderDropdownVisible, setGenderDropdownVisible] = useState(false);
@@ -88,10 +95,11 @@ const genderInputRef = useRef<View>(null);
     }
   };
 
-  const onSubmit = (data: any) => {
+  
+ const onSubmit = (data: any) => {
     console.log('Form Data:', { ...data, image });
     updateStep(2);
-    router.push({ pathname: '/account_setup/Designiche', params: { step: '2' } });
+    navigation.navigate('DesignNiche'); // navigating without params
   };
 
   const openGenderDropdown = () => {

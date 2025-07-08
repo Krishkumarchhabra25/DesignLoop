@@ -1,53 +1,55 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
+
+const { width } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
   // Wrapper ScrollView
   wrapper: {
     flex: 1,
     backgroundColor: '#fff',
-    paddingHorizontal: 16,
+    paddingHorizontal: width * 0.04,
     paddingTop: 20,
   },
 
   // ======= HEADER =======
+  topBar: {
+    position: 'absolute',
+    top: 40,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: width * 0.04,
+    zIndex: 10,
+  },
 
-topBar: {
-  position: 'absolute',
-  top: 40,
-  left: 0,
-  right: 0,
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  paddingHorizontal: 16,
-  zIndex: 10,
-},
+  topBarUsername: {
+    fontSize: width * 0.042,
+    fontWeight: '600',
+    color: '#333',
+  },
 
-topBarUsername: {
-  fontSize: 17,
-  fontWeight: '600',
-  color: '#333',
-},
-iconGroup: {
-  flexDirection: 'row',
-  alignItems: 'center',
-  gap: 15,
-},
+  iconGroup: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 15,
+  },
 
-iconBtn: {
-  marginLeft: 8,
-},
-topBarTitle: {
-  position: 'absolute',
-  left: 0,
-  right: 0,
-  textAlign: 'center',
-  fontSize: 17,
-  fontWeight: '700',
-  color: '#000',
-  zIndex: -1,
-},
+  iconBtn: {
+    marginLeft: 8,
+  },
 
+  topBarTitle: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    textAlign: 'center',
+    fontSize: width * 0.045,
+    fontWeight: '700',
+    color: '#000',
+    zIndex: -1,
+  },
 
   headerContainer: {
     flexDirection: 'row',
@@ -72,38 +74,39 @@ topBarTitle: {
     marginBottom: 16,
   },
 
-profileRowWrapper: {
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  paddingTop: 94,
-  paddingHorizontal: 16,
-},
+  profileRowWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingTop: 94,
+    paddingHorizontal: width * 0.04,
+  },
 
-profileRow: {
-  flexDirection: 'row',
-  alignItems: 'center',
-  flexShrink: 1, // makes sure it doesn’t push the icon out
-},
+  profileRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexShrink: 1,
+  },
 
-editBtn: {
-  padding: 6,
-},
+  editBtn: {
+    padding: 6,
+    marginBottom:20
+  },
 
   avatar: {
-    width: 61,
-    height: 61,
-    borderRadius: 30,
+    width: width * 0.16,
+    height: width * 0.16,
+    borderRadius: width * 0.08,
   },
 
   name: {
     fontWeight: '600',
-    fontSize: 16,
+    fontSize: width * 0.04,
   },
 
   subtitle: {
     color: '#777',
-    fontSize: 10,
+    fontSize: width * 0.03,
     marginTop: 2,
   },
 
@@ -118,14 +121,14 @@ editBtn: {
     flexDirection: 'row',
     alignItems: 'center',
     marginRight: 12,
-    marginTop:4
+    marginTop: 4,
   },
 
   placeText: {
-    fontSize: 10,
+    fontSize: width * 0.03,
     color: '#777',
-    fontWeight:'400',
-    marginLeft:6
+    fontWeight: '400',
+    marginLeft: 6,
   },
 
   // ======= STATS SECTION =======
@@ -153,12 +156,12 @@ editBtn: {
     borderWidth: 1,
     borderColor: '#C6B8F5',
     borderRadius: 6,
-    width: 160,
+    width: width * 0.45,
     justifyContent: 'center',
   },
 
   profileViewText: {
-    fontSize: 12,
+    fontSize: width * 0.032,
     color: '#0F0F0F',
   },
 
@@ -169,7 +172,7 @@ editBtn: {
   },
 
   statBox: {
-    width: 162,
+    width: (width - 48) / 2,
     height: 40,
     borderRadius: 7,
     backgroundColor: '#6F8DE7',
@@ -181,7 +184,7 @@ editBtn: {
 
   statText: {
     color: '#fff',
-    fontSize: 12,
+    fontSize: width * 0.032,
     fontWeight: '500',
   },
 
@@ -189,28 +192,33 @@ editBtn: {
   tabBar: {
     backgroundColor: 'white',
   },
+
   tabBarIndicator: {
     backgroundColor: '#3478f6',
   },
+
   tabBarTab: {
     width: 'auto',
   },
+
   tabBarLabel: {
-    fontSize: 14,
+    fontSize: width * 0.035,
     textTransform: 'none',
   },
+
   tabBarLabelFocused: {
     fontWeight: '600',
   },
+
   tabBarLabelUnfocused: {
     fontWeight: '400',
   },
 
-  // Tab content styles
   tabContent: {
     paddingVertical: 16,
     paddingHorizontal: 4,
   },
+
   section: {
     paddingVertical: 12,
     borderBottomWidth: 1,
@@ -219,9 +227,10 @@ editBtn: {
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+
   sectionTitle: {
     fontWeight: '600',
-    fontSize: 15,
-    color: '#000'
+    fontSize: width * 0.04,
+    color: '#000',
   },
 });

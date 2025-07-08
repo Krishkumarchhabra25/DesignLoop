@@ -1,16 +1,23 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
 import { SafeAreaView, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 import { interests } from '@/constants/Interests';
 import useAccountProgress from '@/hooks/useAccountProgress';
 import useAccountSetup from '@/hooks/useAccountSetup';
+import { AuthStackParamList } from '@/types/navigation';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import styles from '../../styles/AccountSetup/Designiche.styles';
+
+type NavigationProp = NativeStackNavigationProp<AuthStackParamList, 'AccountComplete'>;
+
 
 const DesignicheScreen = () => {
   const { step } = useLocalSearchParams();
-  const router = useRouter();
+   const navigation = useNavigation<NavigationProp>();
+
   const { step: storedStep, updateStep } = useAccountProgress();
   const { selectedInterests, toggleInterest } = useAccountSetup();
 
@@ -18,7 +25,7 @@ const DesignicheScreen = () => {
 
   const onFinish = async () => {
     await updateStep(3);
-    router.replace('/account_setup/accountcomplete');
+   navigation.navigate('AccountComplete')
   };
 
   return (
@@ -66,7 +73,7 @@ const DesignicheScreen = () => {
         </ScrollView>
 
         <View style={styles.buttonRow}>
-          <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
+          <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
             <Text style={styles.backText}>Back</Text>
           </TouchableOpacity>
 

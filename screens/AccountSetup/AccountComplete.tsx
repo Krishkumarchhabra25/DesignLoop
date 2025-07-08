@@ -1,14 +1,22 @@
-import SocialLoginButton from '@/components/Button/SocialLoginButton';
-import DesignLoop from '@/components/svgImageComponents/DesignLoop';
-import styles from '@/styles/AccountSetup/Complete.styles';
+import { BottomTabParamList } from '@/types/navigation';
+import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 
-const AccountCompleteScreen = () => {
-  const router = useRouter();
+import SocialLoginButton from '@/components/Button/SocialLoginButton';
+import DesignLoop from '@/components/svgImageComponents/DesignLoop';
+import styles from '@/styles/AccountSetup/Complete.styles';
+
+// ✅ Define props type
+type Props = {
+  setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const AccountCompleteScreen: React.FC<Props> = ({ setIsAuthenticated }) => {
+  const navigation = useNavigation<BottomTabNavigationProp<BottomTabParamList>>();
 
   return (
     <LinearGradient
@@ -19,16 +27,13 @@ const AccountCompleteScreen = () => {
       style={styles.container}
     >
       <StatusBar style="light" translucent backgroundColor="transparent" />
-
       <LinearGradient
         colors={['rgba(255,255,255,0)', '#FFFFFF']}
         locations={[0.3, 1]}
         style={StyleSheet.absoluteFill}
       />
-
       <SafeAreaView style={styles.safe}>
         <DesignLoop />
-
         <View style={styles.content}>
           <View style={styles.childcontent}>
             <Text style={styles.title}>Account Setup Complete!</Text>
@@ -39,18 +44,13 @@ const AccountCompleteScreen = () => {
 
           <View style={styles.buttonGroup}>
             <SocialLoginButton
-             
               text="Start Exploring"
               useGradient
-              onPress={() => router.push('/(tabs)')}
+              onPress={() => setIsAuthenticated(true)}
             />
-
-           
           </View>
 
-          <Text style={styles.terms}>
-            Need help?
-          </Text>
+          <Text style={styles.terms}>Need help?</Text>
         </View>
       </SafeAreaView>
     </LinearGradient>

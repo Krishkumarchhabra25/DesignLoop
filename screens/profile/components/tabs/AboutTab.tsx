@@ -4,9 +4,7 @@ import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 const AboutTab = () => (
-<View style={[styles.tabContent, { flex: 1 }]}>
-
-
+  <View style={[styles.tabContent, { flex: 1, backgroundColor: 'white' }]}>
     <TouchableOpacity style={styles.section}>
       <Text style={styles.sectionTitle}>Add your profile summary</Text>
       <Ionicons name="add-circle-outline" size={20} color="#5b5b5b" />
@@ -21,5 +19,6 @@ const AboutTab = () => (
     </TouchableOpacity>
   </View>
 );
+
 
 export default AboutTab;

@@ -1,14 +1,14 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-const likesfeed = () => {
+const LikesFeedScreen = () => {
   return (
     <View>
-      <Text>likesfeed</Text>
+      <Text>LikesFeedScreen</Text>
     </View>
   )
 }
 
-export default likesfeed
+export default LikesFeedScreen
 
 const styles = StyleSheet.create({})
