@@ -220,7 +220,8 @@ export const styles = StyleSheet.create({
   },
 
   section: {
-    paddingVertical: 12,
+    paddingHorizontal: 20,
+  paddingTop: 30,
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
     flexDirection: 'row',
@@ -229,8 +230,11 @@ export const styles = StyleSheet.create({
   },
 
   sectionTitle: {
-    fontWeight: '600',
-    fontSize: width * 0.04,
-    color: '#000',
+  color: '#000',
+  fontWeight: '700',
+  fontSize: 16,
+  marginBottom: 12,
+
   },
+
 });

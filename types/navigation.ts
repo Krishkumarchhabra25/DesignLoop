@@ -12,3 +12,10 @@ export type BottomTabParamList = {
   LikesFeed: undefined;
   Profile: undefined;
 };
+// types/navigation.ts or types.ts
+
+export type ProfileStackParamList = {
+  ProfileMain: undefined;
+  EditProfile: undefined;
+  // Add more profile-related screens here later
+};

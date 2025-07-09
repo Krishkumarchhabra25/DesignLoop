@@ -1,19 +1,23 @@
-import { NavigationContainer } from "@react-navigation/native"
-import { useState } from "react"
-import AuthNavigator from "./AuthNavigator"
-import BottomTabNavigator from "./BottomTabNavigator"
+import { NavigationContainer } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import AuthNavigator from './AuthNavigator';
+import BottomTabNavigator from './BottomTabNavigator';
 
 const AppNavigation = () => {
-    const [isAuthenticated , setIsAuthenticated]= useState(false)
-    return (
-        <NavigationContainer>
-      {isAuthenticated ? (
-        <BottomTabNavigator />
-      ) : (
-        <AuthNavigator setIsAuthenticated={setIsAuthenticated} />
-      )}
-    </NavigationContainer>
-    )
-}
+const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-export default AppNavigation
+  return (
+    <SafeAreaProvider>
+      <NavigationContainer>
+       {isAuthenticated ? (
+  <BottomTabNavigator />
+) : (
+  <AuthNavigator setIsAuthenticated={setIsAuthenticated} />
+)}
+      </NavigationContainer>
+    </SafeAreaProvider>
+  );
+};
+
+export default AppNavigation;

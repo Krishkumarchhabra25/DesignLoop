@@ -8,11 +8,11 @@ import { useColorScheme } from '@/hooks/useColorScheme.web';
 import AddPostScreen from '@/screens/addpost/AddPostScreen';
 import Home from '@/screens/Home/Home';
 import LikesFeedScreen from '@/screens/Likesfeed/LikesFeedScreen';
-import ProfileScreen from '@/screens/profile/ProfileScreen';
 import SearchScreen from '@/screens/search/SearchScreen';
 import { IconSymbol } from '../components/ui/IconSymbol';
 import TabBarBackground from '../components/ui/TabBarBackground';
 import { Colors } from '../constants/Colors';
+import ProfileNavigator from './ProfileNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -104,7 +104,7 @@ const BottomTabNavigator = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileScreen}
+        component={ProfileNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <View>

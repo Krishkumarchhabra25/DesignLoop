@@ -13,17 +13,16 @@ const Stats = () => {
   <Ionicons name="logo-twitter" size={30} color="#1DA1F2" style={{ marginRight:10}} />
           <Ionicons name="logo-facebook" size={30} color="#1877F2" style={{ marginRight: 10 }} />
           <Ionicons name="logo-linkedin" size={30} color="#0077B5" />
-        {/*   <InstagramIcon style={{ marginRight: 8 }} />
-          <XIcon style={{ marginRight: 8 }} />
-          <FacebookIcon style={{ marginRight: 8 }} />
-          <LinkedinIcon /> */}
         </View>
 
         <View style={styles.profileViews}>
           <Ionicons name="stats-chart" size={20} color="#0F0F0F" style={{ marginRight: 5 }} />
-          <Text style={styles.profileViewText}>
-            <Text style={{ fontWeight: '600' }}>238</Text> profile Views
-          </Text>
+<Text style={styles.profileViewText}>
+  <Text style={{ fontWeight: '600' }}>238</Text>
+  <Text> profile Views</Text>
+</Text>
+
+
         </View>
       </View>
 
