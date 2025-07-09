@@ -51,21 +51,23 @@ export const styles = StyleSheet.create({
 
   tagsWrapper: {
     flexDirection: 'row',
+    padding:10,
     flexWrap: 'wrap',
-    columnGap: 8,
-    rowGap: 8,
+    columnGap: 7,
+    rowGap: 10,
     marginTop: 12,
   },
 
   tagChip: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    paddingHorizontal: 8,
+    paddingVertical: 14,
     backgroundColor: '#f5f5f5',
     borderRadius: 20,
   },
 
   tagText: {
     fontSize: 13,
+    padding:2,
     color: '#333',
   },
 

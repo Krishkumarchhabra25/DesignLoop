@@ -89,7 +89,7 @@ const AboutTab = () => {
   );
 
   return (
-    <ScrollView style={styles.tabContent}>
+    <ScrollView style={styles.tabContent} showsVerticalScrollIndicator={false}>
       {/* Summary Section */}
     <View>
   <TouchableOpacity
