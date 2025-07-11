@@ -1,9 +1,22 @@
 import { styles } from '@/styles/profile/Profile.styles';
+import { ProfileStackParamList } from '@/types/navigation';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
+
+type ProfileScreenNavigationProp = NativeStackNavigationProp<
+  ProfileStackParamList,
+  'ProfileMain'
+>;
+
+
 const Stats = () => {
+    const navigation = useNavigation<ProfileScreenNavigationProp>();
+
+
   return (
     <View style={styles.statsWrapper}>
       {/* Top Row */}
@@ -27,11 +40,17 @@ const Stats = () => {
       </View>
 
       {/* Bottom Row */}
-      <View style={styles.bottomRow}>
-        <TouchableOpacity style={styles.statBox}>
+     <View style={styles.bottomRow}>
+        <TouchableOpacity
+          style={styles.statBox}
+          onPress={() => navigation.navigate('FollowersFollowing', { initialTab: 'Followers' })}
+        >
           <Text style={styles.statText}>6 Followers</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.statBox}>
+        <TouchableOpacity
+          style={styles.statBox}
+          onPress={() => navigation.navigate('FollowersFollowing', { initialTab: 'Following' })}
+        >
           <Text style={styles.statText}>8 Following</Text>
         </TouchableOpacity>
       </View>

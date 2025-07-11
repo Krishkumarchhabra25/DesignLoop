@@ -21,5 +21,8 @@ export type ProfileStackParamList = {
   EditExperince: undefined;
   AddEducation: undefined;
   EditEducation: undefined;
+  AddProjects:undefined;
+  EditProjects:undefined;
+  FollowersFollowing: { initialTab: 'Followers' | 'Following' };
   // Add more profile-related screens here later
 };

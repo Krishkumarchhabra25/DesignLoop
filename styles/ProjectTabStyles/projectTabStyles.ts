@@ -112,4 +112,27 @@ export const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '500',
   },
+
+  emptyState: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginTop: 48,
+},
+
+emptyAddButton: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  backgroundColor: '#EEF2FF',
+  paddingVertical: 10,
+  paddingHorizontal: 16,
+  borderRadius: 8,
+},
+
+emptyAddText: {
+  fontSize: 16,
+  fontWeight: '600',
+  color: '#4F46E5',
+},
+
 });
