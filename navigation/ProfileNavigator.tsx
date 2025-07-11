@@ -2,6 +2,10 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 
+import AddEducation from '@/screens/profile/AddEducation';
+import AddExperience from '@/screens/profile/AddExperience';
+import EditEducation from '@/screens/profile/EditEducation';
+import EditExperience from '@/screens/profile/EditExperience';
 import EditProfileScreen from '@/screens/profile/EditProfileScreen';
 import ProfileScreen from '@/screens/profile/ProfileScreen';
 import { ProfileStackParamList } from '@/types/navigation';
@@ -49,6 +53,127 @@ const ProfileNavigator = () => {
   })}
 />
 
+ <Stack.Screen
+  name="AddExperince"
+  component={AddExperience}
+  options={({ navigation }) => ({
+    headerTitle: 'Add Experience',
+    headerTitleAlign: 'center',
+    headerStyle: {
+      backgroundColor: '#fff', // set a background so text is visible
+    },
+    headerTintColor: '#000', // makes sure back icon and title are visible (black)
+    headerLeft: () => (
+      <TouchableOpacity
+        onPress={() => navigation.goBack()}
+        style={{ paddingLeft: 12 }}
+      >
+        <Ionicons name="arrow-back" size={24} color="#000" />
+      </TouchableOpacity>
+    ),
+    headerRight: () => (
+      <TouchableOpacity
+        onPress={() => {
+          console.log('Saved');
+        }}
+        style={{ paddingRight: 12 }}
+      >
+        <Ionicons name="checkmark" size={24} color="green" />
+      </TouchableOpacity>
+    ),
+  })}
+/>
+ <Stack.Screen
+  name="EditExperince"
+  component={EditExperience}
+  options={({ navigation }) => ({
+    headerTitle: 'Edit Experience',
+    headerTitleAlign: 'center',
+    headerStyle: {
+      backgroundColor: '#fff', // set a background so text is visible
+    },
+    headerTintColor: '#000', // makes sure back icon and title are visible (black)
+    headerLeft: () => (
+      <TouchableOpacity
+        onPress={() => navigation.goBack()}
+        style={{ paddingLeft: 12 }}
+      >
+        <Ionicons name="arrow-back" size={24} color="#000" />
+      </TouchableOpacity>
+    ),
+    headerRight: () => (
+      <TouchableOpacity
+        onPress={() => {
+          console.log('Saved');
+        }}
+        style={{ paddingRight: 12 }}
+      >
+        <Ionicons name="checkmark" size={24} color="green" />
+      </TouchableOpacity>
+    ),
+  })}
+/>
+ <Stack.Screen
+  name="AddEducation"
+  component={AddEducation}
+  options={({ navigation }) => ({
+    headerTitle: 'Add Education',
+    headerTitleAlign: 'center',
+    headerStyle: {
+      backgroundColor: '#fff', // set a background so text is visible
+    },
+    headerTintColor: '#000', // makes sure back icon and title are visible (black)
+    headerLeft: () => (
+      <TouchableOpacity
+        onPress={() => navigation.goBack()}
+        style={{ paddingLeft: 12 }}
+      >
+        <Ionicons name="arrow-back" size={24} color="#000" />
+      </TouchableOpacity>
+    ),
+    headerRight: () => (
+      <TouchableOpacity
+        onPress={() => {
+          console.log('Saved');
+        }}
+        style={{ paddingRight: 12 }}
+      >
+        <Ionicons name="checkmark" size={24} color="green" />
+      </TouchableOpacity>
+    ),
+  })}
+/>
+
+ <Stack.Screen
+  name="EditEducation"
+  component={EditEducation}
+  options={({ navigation }) => ({
+    headerTitle: 'Edit Education',
+    headerTitleAlign: 'center',
+    headerStyle: {
+      backgroundColor: '#fff', // set a background so text is visible
+    },
+    headerTintColor: '#000', // makes sure back icon and title are visible (black)
+    headerLeft: () => (
+      <TouchableOpacity
+        onPress={() => navigation.goBack()}
+        style={{ paddingLeft: 12 }}
+      >
+        <Ionicons name="arrow-back" size={24} color="#000" />
+      </TouchableOpacity>
+    ),
+    headerRight: () => (
+      <TouchableOpacity
+        onPress={() => {
+          console.log('Saved');
+        }}
+        style={{ paddingRight: 12 }}
+      >
+        <Ionicons name="checkmark" size={24} color="green" />
+      </TouchableOpacity>
+    ),
+  })}
+/>
     </Stack.Navigator>
   );
 };

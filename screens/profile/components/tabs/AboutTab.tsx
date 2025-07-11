@@ -58,78 +58,115 @@ const AboutTab = () => {
     },
   ];
 
-  const renderTimelineItem = (
-    item: { title: string; company?: string; duration: string; note?: string; degree?: string; badge?: string },
-    isLast: boolean = false,
-    key: number
-  ) => (
-    <View key={key} style={styles.timelineItem}>
-      <View style={styles.timelineMarker}>
-        <View style={styles.timelineDot} />
-        {!isLast && <View style={styles.timelineLine} />}
-      </View>
-
-      <View style={styles.timelineContent}>
-        <Text style={styles.timelineTitle}>{item.title}</Text>
-        {item.company && <Text style={styles.timelineSubtitle}>{item.company}</Text>}
-        {item.degree && <Text style={styles.timelineSubtitle}>{item.degree}</Text>}
-        <Text style={styles.timelineDuration}>{item.duration}</Text>
-        {item.note && <Text style={styles.timelineNote}>{item.note}</Text>}
-        {item.badge && (
-          <View style={styles.badge}>
-            <Text style={styles.badgeText}>{item.badge}</Text>
-          </View>
-        )}
-      </View>
-
-      <TouchableOpacity>
-        <Ionicons name="create-outline" size={18} color="#4f46e5" />
-      </TouchableOpacity>
+ const renderExperienceItem = (
+  item: { title: string; company?: string; duration: string; badge?: string },
+  isLast: boolean,
+  key: number
+) => (
+  <View key={key} style={styles.timelineItem}>
+    <View style={styles.timelineMarker}>
+      <View style={styles.timelineDot} />
+      {!isLast && <View style={styles.timelineLine} />}
     </View>
-  );
+
+    <View style={styles.timelineContent}>
+      <Text style={styles.timelineTitle}>{item.title}</Text>
+      {item.company ? <Text style={styles.timelineSubtitle}>{item.company}</Text> : null}
+      <Text style={styles.timelineDuration}>{item.duration}</Text>
+      {item.badge ? (
+        <View style={styles.badge}>
+          <Text style={styles.badgeText}>{item.badge}</Text>
+        </View>
+      ) : null}
+    </View>
+
+    <TouchableOpacity onPress={() => navigation.navigate('EditExperince')}>
+      <Ionicons name="create-outline" size={18} color="#4f46e5" />
+    </TouchableOpacity>
+  </View>
+);
+
+const renderEducationItem = (
+  item: { title: string; degree?: string; duration: string; note?: string; badge?: string },
+  isLast: boolean,
+  key: number
+) => (
+  <View key={key} style={styles.timelineItem}>
+    <View style={styles.timelineMarker}>
+      <View style={styles.timelineDot} />
+      {!isLast && <View style={styles.timelineLine} />}
+    </View>
+
+    <View style={styles.timelineContent}>
+      <Text style={styles.timelineTitle}>{item.title}</Text>
+      {item.degree ? <Text style={styles.timelineSubtitle}>{item.degree}</Text> : null}
+      <Text style={styles.timelineDuration}>{item.duration}</Text>
+      {item.note ? <Text style={styles.timelineNote}>{item.note}</Text> : null}
+      {item.badge ? (
+        <View style={styles.badge}>
+          <Text style={styles.badgeText}>{item.badge}</Text>
+        </View>
+      ) : null}
+    </View>
+
+    <TouchableOpacity onPress={() => navigation.navigate('EditEducation')}>
+      <Ionicons name="create-outline" size={18} color="#4f46e5" />
+    </TouchableOpacity>
+  </View>
+);
+
 
   return (
-    <ScrollView style={styles.tabContent} showsVerticalScrollIndicator={false}>
-      {/* Summary Section */}
-    <View>
-  <TouchableOpacity
-    style={styles.summaryContainer}
-    onPress={() => navigation.navigate('EditProfile')}
-  >
-    <Text style={styles.sectionTitle}>Summary</Text>
+   <ScrollView style={styles.tabContent} showsVerticalScrollIndicator={false}>
+  {/* Summary Section */}
+  <View>
+    <TouchableOpacity
+      style={styles.summaryContainer}
+      onPress={() => navigation.navigate('EditProfile')}
+    >
+      <Text style={styles.sectionTitle}>Summary</Text>
+      <Text style={styles.summaryText}>{summary}</Text>
+    </TouchableOpacity>
 
-    <Text style={styles.summaryText}>{summary}</Text>
-  </TouchableOpacity>
-
-  <View style={styles.tagsWrapper}>
-    {tags.map((tag, index) => (
-      <View key={tag + index} style={styles.tagChip}>
-        <Text style={styles.tagText}>{tag}</Text>
-      </View>
-    ))}
+    <View style={styles.tagsWrapper}>
+      {tags.map((tag, index) => (
+        <View key={tag + index} style={styles.tagChip}>
+          <Text style={styles.tagText}>{tag}</Text>
+        </View>
+      ))}
+    </View>
   </View>
-</View>
 
+  {/* Experience Section */}
+  <View style={styles.sectionWrapper}>
+    <View style={styles.sectionHeader}>
+      <Text style={styles.sectionTitle}>Experience</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('AddExperince')}>
+        <Ionicons name="add-circle-outline" size={20} color="#4f46e5" />
+      </TouchableOpacity>
+    </View>
 
-      {/* Experience Section */}
-      <View style={styles.sectionWrapper}>
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Experience</Text>
-          <Ionicons name="add-circle-outline" size={20} color="#4f46e5" />
-        </View>
-        <Text style={styles.sectionNote}>2 Years and 9 months</Text>
-        {experiences.map((item, idx) => renderTimelineItem(item, idx === experiences.length - 1, idx))}
-      </View>
+    <Text style={styles.sectionNote}>2 Years and 9 months</Text>
+    {experiences.map((item, idx) =>
+      renderExperienceItem(item, idx === experiences.length - 1, idx)
+    )}
+  </View>
 
-      {/* Education Section */}
-      <View style={styles.sectionWrapperBottom}>
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Education</Text>
-          <Ionicons name="add-circle-outline" size={20} color="#4f46e5" />
-        </View>
-        {education.map((item, idx) => renderTimelineItem(item, idx === education.length - 1, idx))}
-      </View>
-    </ScrollView>
+  {/* Education Section */}
+  <View style={styles.sectionWrapperBottom}>
+    <View style={styles.sectionHeader}>
+      <Text style={styles.sectionTitle}>Education</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('AddEducation')}>
+        <Ionicons name="add-circle-outline" size={20} color="#4f46e5" />
+      </TouchableOpacity>
+    </View>
+
+    {education.map((item, idx) =>
+      renderEducationItem(item, idx === education.length - 1, idx)
+    )}
+  </View>
+</ScrollView>
+
   );
 };
 

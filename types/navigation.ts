@@ -17,5 +17,9 @@ export type BottomTabParamList = {
 export type ProfileStackParamList = {
   ProfileMain: undefined;
   EditProfile: undefined;
+  AddExperince: undefined;
+  EditExperince: undefined;
+  AddEducation: undefined;
+  EditEducation: undefined;
   // Add more profile-related screens here later
 };
